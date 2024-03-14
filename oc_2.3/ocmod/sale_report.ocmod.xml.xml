@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<name>Opencart Sale Report</name>
+	<version>2.0.0</version>
+	<author>SynapseIndia</author>
+	<code>oc_sales</code>
+	<link>https://www.synapseindia.com/</link>
+
+	<file path="admin/controller/common/column_left.php">
+			<operation>
+					<search>
+							<![CDATA[
+								// Catalog
+							]]>
+					</search>
+					<add position="before">
+						<![CDATA[
+						if ($this->config->get('module_salereport_status')) {
+							if ($this->user->hasPermission('access', 'sale/salereport')) {
+									$data['menus'][] = array(
+											'id'       => 'menu-report',
+											'icon'     => 'fa-first-order fw',
+											'name'     => $this->language->get('text_report'),
+											'href'     => $this->url->link('sale/salereport', 'token=' . $this->session->data['token'], true),
+											'children' => array()
+									);
+							}
+						}
+				]]>
+			</add>
+	</operation>
+			<operation>
+					<search>
+							<![CDATA[
+									$data['text_openbay_order_import'] = $this->language->get('text_openbay_order_import');
+							]]>
+					</search>
+					<add position="before">
+							<![CDATA[
+									$data['text_report'] = $this->language->get('text_report');
+							]]>
+					</add>
+			</operation>
+	</file>
+
+	<file path="admin/language/*/common/column_left.php">
+			<operation>
+					<search>
+							<![CDATA[
+									//
+							]]>
+					</search>
+					<add position="before">
+							<![CDATA[
+									$_['text_report']                      = 'Sale Report';
+							]]>
+					</add>
+			</operation>
+	</file>
+</modification>

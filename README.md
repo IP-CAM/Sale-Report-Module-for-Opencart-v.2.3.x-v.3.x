@@ -1,5 +1,3 @@
-# OpenCart-Module-Sample
-
 # Installation Guide
 
 According to Opencart Version installed in your system. Then, upload admin to the Opencart root directory.
